@@ -56,9 +56,9 @@ app.post("/login", (req, res) => {
     if(result .length > 0){
       bcrypt.compare(password, result[0].password, (erro, result) => {
        if(result){
-        res.send("Usuário logado com sucesso!");
+        res.send({msg: "Usuário logado com sucesso!"});
        }else{
-        res.send("Senha está incorreta!");
+        res.send({msg: "Senha está incorreta!"});
        }
       });
       
@@ -67,6 +67,38 @@ app.post("/login", (req, res) => {
     }
   });
 });
+
+
+
+
+app.put("/alterar-senha", (req, res) => {
+  const password = req.body.password;
+
+  db.query("UPDATE password SET password = ?", [password], (err, result) => {
+    if(err){
+      res.send(err);
+    }
+    if(result.length == 0){
+      bcrypt.hash(password, saltRounds, (erro, hash) => {
+        db.query(
+          "INSERT INTO usuarios (email, password) VALUE (?,?)",
+          [email, hash],
+          (error, response) => {
+            if (err) {
+              res.send(err);
+            }
+  
+          res.send({msg: "Cadastrado com Sucesso!"});
+          }
+        );
+      })
+     
+    }else{
+      res.send({msg: "Usuário já cadastrado"});
+    }
+  });
+});
+
 
 app.listen(3001, () => {
   console.log("rodando na porta 3001");

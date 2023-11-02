@@ -26,8 +26,7 @@ function App() {
       email: values.email,
       password: values.password,
     }).then((response) => {
-      alert(response.data);
-      console.log(response);
+      alert(response.data.msg);
     });
   };
 
@@ -76,7 +75,9 @@ function App() {
         </Form>
       </Formik>
 
+
       {/* ////////////////////////////////// */}
+
 
       <h1>Cadastre-se</h1>
       <Formik
