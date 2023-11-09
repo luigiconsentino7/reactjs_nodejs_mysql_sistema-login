@@ -23,17 +23,9 @@ h1{
     font-size: 40px;
 }
 
-h2 a{
-    margin: 0;
-    text-align: center;
-    color: white;
-    font-size: 13px;
-    margin-bottom: 20px;
-    text-decoration: none;
-}
-
 .login-form{
     padding: 5px;
+    margin-bottom: 35px;
 }
 
 .form-field{

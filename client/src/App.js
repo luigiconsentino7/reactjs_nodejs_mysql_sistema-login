@@ -70,8 +70,6 @@ function App() {
 
           <button className='button' type='submit'>Login</button>
 
-          <h2><a href="#">Esqueceu a senha?</a></h2>
-
         </Form>
       </Formik>
 
